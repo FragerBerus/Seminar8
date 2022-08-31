@@ -7,6 +7,8 @@ Console.Write("Задайте количество строк матрицы: ")
 int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Задайте количество столбцов матрицы: ");
 int columns = Convert.ToInt32(Console.ReadLine());
+if (rows == columns)
+{
 /// Метод заполнения матрицы GetArray
 int[,] GetArray(int m, int n)
 {
@@ -32,6 +34,7 @@ void PrintArray (int[,] matrix)
         Console.WriteLine();
     }
 }
+/// Метод замены строк на столбцы в матрице
 int[,] ChangeRowsColumns (int[,] matrix)
 {
     int[,] result = new int[matrix.GetLength(0), matrix.GetLength(1)];
@@ -48,3 +51,9 @@ int[,] resultMatrix = GetArray(rows, columns);
 PrintArray(resultMatrix);
 Console.WriteLine("Модифицированная матрица:");
 PrintArray(ChangeRowsColumns(resultMatrix));
+}
+else
+{
+    Console.WriteLine("Замена столбцов на строки невозможна, т.к. количество строк и столбцов не равны.");
+    return;
+}
